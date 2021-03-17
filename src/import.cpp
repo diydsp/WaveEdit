@@ -18,6 +18,7 @@ enum ImportMode {
 
 static float gain;
 static float offset;
+static float offset_fine;
 static float zoom;
 static float leftTrim;
 static float rightTrim;
@@ -29,18 +30,18 @@ static char status[1024] = "";
 static Bank importBank;
 
 const int audioLenMin = 32;
-const int audioLenMax = BANK_LEN * WAVE_LEN * 100;
+const int audioLenMax = BANK_LEN * WAVE_LEN * 100;    // default bank_len-64, wave_len=256
 
-
+// really only for calc'ing initial zoom val
 static void zoomFit() {
-	zoom = clampf((float)audioLen / (BANK_LEN * WAVE_LEN), 0.01, 100.0);
+	zoom = clampf((float)audioLen / (BANK_LEN * WAVE_LEN), 0.01, 100.0);  // bounds of slider
 }
 
 static void clearImport() {
 	gain = 0.0;
 	offset = 0.0;
 	zoom = 1.0;
-	leftTrim = 0.0;
+	leftTrim = 0.0;       // also known as beginning and ending
 	rightTrim = BANK_LEN;
 	mode = CLEAR_IMPORT;
 	if (audio)
@@ -77,7 +78,7 @@ static void loadImport(const char *path) {
 		return;
 	}
 
-	zoomFit();
+	zoomFit();  // generate default intial zoom
 
 	// Generate status line
 	char *pathCpy = strdup(path);
@@ -194,7 +195,7 @@ void importPage() {
 			float previewStart = offset * BANK_LEN * WAVE_LEN;
 			float previewRatio = BANK_LEN * WAVE_LEN / (float)audioLen;
 			float previewEnd = previewStart + BANK_LEN * WAVE_LEN * previewRatio * zoom;
-			float deltaAudio = renderBankWave("audio preview", 200.0, audioPreviewGain,
+			float deltaAudio = renderBankWave("audio preview", 200.0, audioPreviewGain,  // 200 = ht in pix of ui elem
 				BANK_LEN * WAVE_LEN,
 				previewStart,
 				previewEnd,
@@ -234,7 +235,8 @@ void importPage() {
 			ImGui::SliderFloat("##gain", &gain, -40.0, 40.0, "Gain: %.2fdB");
 
 			// Offset
-			ImGui::SliderFloat("##offset", &offset, 0.0, 1.0, "Offset: %.4f");
+			ImGui::SliderFloat("##offset", &offset, 0.0, 1.0, "Offset: %.8f");
+			ImGui::SliderFloat("##offset_fine", &offset_fine, 0.0, 1.0, "Offset: %.8f");
 
 			// Zoom
 			if (ImGui::Button("Zoom 1:1")) zoom = 1.0;
@@ -246,7 +248,7 @@ void importPage() {
 			ImGui::SameLine();
 			ImGui::Checkbox("Snap to Power of 2", &snapZoom);
 			ImGui::SameLine();
-			ImGui::SliderFloat("##zoom", &zoom, 0.01, 100.0, "Zoom: %.4f", 0.0);
+			ImGui::SliderFloat("##zoom", &zoom, 0.01, 100.0, "Zoom: %.8f", 0.0);
 			if (snapZoom) {
 				zoom = powf(2.0, roundf(log2f(zoom)));
 			}
@@ -289,7 +291,7 @@ void importPage() {
 			ImGui::SameLine();
 			if (ImGui::Button("Import")) {
 				currentBank = importBank;
-				clearImport();
+				//clearImport();  // fuck this shit!  leave old values behind.  make a button to clear to def. 
 			}
 		}
 	}

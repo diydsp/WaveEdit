@@ -1,0 +1,62 @@
+2  cd WaveEdit/
+    3  ls
+    4  cd src
+    5  ls
+    6  wc *
+    7  wc * |sort -rn
+    8  jmacs ui.cpp 
+    9  wc * |sort -rn
+   10  grep import *
+   11  fg
+   12  grep BANK_LEN *.h
+   13  grep BANK_LEN *.h*
+   14  grep WAVE_LEN *.h*
+   15  fg
+   16  glxgears
+   17  sudo apt install -y mesa-utils
+   18  glxgears
+   19  fg
+   20  cd dep
+   21  ls
+   22  cd ..
+   23  cd dep
+   24  ls
+   25  cd SDL2-2.0.7/
+   26  ls
+   27  c dtest
+   28  cd test
+   29  ls
+   30  ./configure 
+   31  more README 
+   32  ls
+   33  ./configure 
+   34  cd ..
+   35  make test
+   36  make -f test
+   37  ls test
+   38  ls
+   39  ls build
+   40  more Makefile
+   41  make all
+   42  ls
+   43  ls test
+   44  ls test/shapes/
+   45  ls
+   46  ./sdl2-config 
+   47  more README-SDL.txt 
+   48  more README.txt 
+   49  ls
+   50  sudo apt search
+   51  sudo apt search sdl2
+   52  sudo apt install libsdl2-dev
+   53  sudo apt install -y libsdl2-dev
+   54  make
+   55  ./sdl2-config 
+   56  cd ..
+   57  ./WaveEdit
+   58  ls -lart
+   59  rm libSDDL2-2.0.so.0 
+   60  rm libSDL2*
+   61  ls -lart
+   62  history | grep LID_
+   63  history

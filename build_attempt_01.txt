@@ -1,0 +1,91 @@
+ 21  git clone https://github.com/AndrewBelt/WaveEdit.git
+   22  ls
+   23  cd WaveEdit/
+   24  ls
+   25  gcc
+   26  more README.md 
+   27  cd dep
+   28  make
+   29  llls
+   30  ls
+   31  jobs
+   32  cd ..
+   33  more README.md 
+   34  git submodule update --init --recursive
+   35  make
+   36  sudo apt install gtk
+   37  sudo apt install gtk-dev
+   38  sudo apt search gtk
+   39  sudo apt install -y libgtk-3-dev
+   40  sudo apt update
+   41  sudo apt install -y libgtk-3-dev
+   42  make
+   43  sudo apt install -y libgtk-3-dev
+   44  sudo apt install -y libgtk-2-dev
+   45  sudo apt install -y libgtk-2.0-dev
+   46  sudo apt install -y libgtk2.0-dev
+   47  more README.md 
+   48  ls
+   49  make &
+   50  job
+   51  jobs
+   52  ls
+   53  ./WaveEdit
+   54  lsdep 
+   55  ls dep
+   56  cd dep
+   57  cd ..
+   58  ls
+   59  more README.md 
+   60  ls
+   61  cd dep
+   62  ls
+   63  cd SDL2-2.0.7/
+   64  ls
+   65  make
+   66  sudo make install
+   67  cd ..
+   68  ./WaveEdit
+   69  ldd WaveEdit
+   70  ldd WaveEdit | grep -i sdl
+   71  ls
+   72  ldd WaveEdit
+   73  find . -name \*.so
+   74  cp dep/SDL2-2.0.7/build/.libs/libSDL2.so .
+   75  cp dep/curl-7.54.1/lib/.libs/libcurl.so .
+   76  ls
+   77  LD_LIBRARY_PATH=. ./WaveEdit
+   78  ln -s libSDL2.so libSDDL2-2.0.so.0
+   79  LD_LIBRARY_PATH=. ./WaveEdit
+   80  ls
+   81  ls -l
+   82  ln -s libSDL2.so libSDL2-2.0.so.0
+   83  LD_LIBRARY_PATH=. ./WaveEdit
+   84  ln -s libcurl.so libcurl.so.4
+   85  LD_LIBRARY_PATH=. ./WaveEdit
+   86  make clean
+   87  make
+   88  LD_LIBRARY_PATH=. ./WaveEdit
+   89  ls
+   90  cd dep
+   91  ls
+   92  cd SDL2-2.0.7/
+   93  ls
+   94  ./sdl2-config 
+   95  more README-SDL.txt 
+   96  cd build
+   97  ls
+   98  find .. -name \*.so
+   99  cd ..
+  100  find .. -name \*.so
+  101  ls
+  102  gf
+  103  fg
+  104  LD_LIBRARY_PATH=. ./WaveEdit
+  105  cd ../..
+  106  LD_LIBRARY_PATH=. ./WaveEdit
+  107  bg
+  108  git diff
+  109  git remote -v
+  110  make
+  111  history
